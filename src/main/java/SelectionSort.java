@@ -7,6 +7,8 @@ public class SelectionSort {
             int smallestIndex = findSmallest(arr);
             newArr[i] = arr[smallestIndex];
 
+            arr = getNewArrWithoutSmallest(arr, smallestIndex);
+
         }
 
         return newArr;
@@ -24,4 +26,16 @@ public class SelectionSort {
         return smallestIndex;
     }
 
+
+    private static int[] getNewArrWithoutSmallest(int[] arr, int smallestIndex) {
+        int[] newArrWithoutSmallest = new int[arr.length - 1];
+        for (int i = 0; i < arr.length; i++) {
+            if (i < smallestIndex) {
+                newArrWithoutSmallest[i] = arr[i];
+            } else if (i > smallestIndex) {
+                newArrWithoutSmallest[i - 1] = arr[i];
+            }
+        }
+        return newArrWithoutSmallest;
+    }
 }
